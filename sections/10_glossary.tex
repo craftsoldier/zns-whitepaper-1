@@ -23,7 +23,8 @@ Binding & The association between a name and a Unified Address established by it
 Registry state & The set of name bindings derived from accepted Name Notes in canonical chain order; see Section~\ref{sec:resolver}. \\
 Name Note viewing key & The published full viewing key for the Mint account used to create Name Notes. \\
 Mint & The protocol's single registrar. It evaluates name requests under the naming policy and creates Name Notes for accepted requests; see Section~\ref{sec:the-mint}. \\
-Mint authorization & Authorization provided by the recognized Mint spending key and accepted subject to the attestation requirements in Section~\ref{sec:the-mint}. \\
+Mint authorization & Authorization provided by the recognized Mint spending key, evidenced on-chain by the spend of a Mint-held note (the predecessor Name Note, or an anchor for a \action{claim}), and accepted subject to the attestation requirements in Section~\ref{sec:the-mint}; see Section~\ref{sec:resolver}. \\
+Anchor & A zero-value note held by the Name Note account whose spend authorizes a \action{claim}. Each accepted \action{claim} spends one anchor and creates its successor; see Section~\ref{sec:resolver-state}. \\
 Resolver & A client that scans the canonical Zcash chain using the Name Note viewing key, verifies Name Notes, derives registry state according to Section~\ref{sec:resolver}, and provides current and historical binding state, including committed expiration values. \\
 User authorization & Request, Relay, and Respond, used to authorize an \action{update} or controller-requested \action{release}. For an \action{update}, the OTP is bound to \texttt{(name, action, ua, expires\_at)}; see Section~\ref{sec:authorization}. \\
 One-time passcode (OTP) & A six-digit decimal passcode delivered in the Relay and returned in the Respond; see Section~\ref{sec:authorization}. \\
